@@ -327,14 +327,14 @@ export default function App() {
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
-              <div className="flex items-center gap-4 mb-8">
+              <div className="flex items-center gap-4 mb-6">
                 <div className="h-px w-8 bg-[#ffd700]" />
                 <span className="text-[#ffd700] text-xs tracking-[1.44px] uppercase font-['Inter'] font-medium">
                   Quem somos
                 </span>
               </div>
 
-              <h2 className="font-['Oswald'] font-bold text-4xl md:text-6xl lg:text-7xl tracking-tight uppercase text-white mb-10 lg:mb-12 leading-tight">
+              <h2 className="font-['Oswald'] font-bold text-4xl md:text-6xl lg:text-7xl tracking-tight uppercase text-white mb-6 md:mb-8 lg:mb-8 leading-tight">
                 <div>FORJADOS</div>
                 <div>PELA</div>
                 <div className="text-[#ffd700]">DISCIPLINA.</div>
@@ -347,21 +347,19 @@ export default function App() {
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
-              <p className="text-[#b0b0b0] font-['Inter'] leading-relaxed mb-6 text-base md:text-lg">
-                A FORGEE nasceu de uma certeza simples: ambiente mediano produz resultado mediano.
-              </p>
-              <p className="text-[#b0b0b0] font-['Inter'] leading-relaxed mb-8 text-base md:text-lg">
-                Cada metro quadrado foi pensado para que o espaço não interfira — ele desaparece. O que fica é o treino, a concentração e o progresso.
+              <p className="text-[#b0b0b0] font-['Inter'] leading-relaxed mb-5 text-base md:text-lg">
+                A FORGEE nasce dessa certeza: ambiente mediano, resultado mediano. Cada detalhe foi
+                pensado para o espaço sumir — ficam treino, foco e progresso.
               </p>
 
-              <div className="bg-[#111111] border-l-4 border-[#ffd700] p-6 md:p-8 mb-8">
-                <p className="text-[#ffd700] font-['Inter'] italic text-lg md:text-xl">
+              <div className="bg-[#111111] border-l-4 border-[#ffd700] p-5 md:p-6 mb-5">
+                <p className="text-[#ffd700] font-['Inter'] italic text-base md:text-lg">
                   "In silence, the transformation begins."
                 </p>
               </div>
 
               <p className="text-[#b0b0b0] font-['Inter'] leading-relaxed text-base md:text-lg">
-                Aqui não tem música forçada, espelho em excesso ou coach em cima. Tem equipamento que não decepciona no seu melhor dia, profissionais que aparecem quando você precisa e silêncio o suficiente para se ouvir.
+                Equipamento sério, equipe presente e silêncio para ouvir o corpo.
               </p>
             </motion.div>
           </div>
