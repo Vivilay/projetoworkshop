@@ -270,9 +270,9 @@ export default function App() {
 
             <motion.div variants={fadeInUp}>
               <h1 className="font-['Oswald'] font-bold tracking-[-0.03em] uppercase leading-[0.95] mb-6 md:mb-8">
-                <div className="text-white text-4xl md:text-6xl lg:text-[90px] lg:leading-[85px]">SEM MÁGICA</div>
-                <div className="text-white text-4xl md:text-6xl lg:text-[90px] lg:leading-[85px]">SEM ATALHOS</div>
-                <div className="text-[#ffd700] text-4xl md:text-6xl lg:text-[90px] lg:leading-[85px]">SEM DESCULPAS</div>
+                <div className="text-white text-4xl md:text-6xl lg:text-[90px] lg:leading-[85px]">SEM MÁGICA.</div>
+                <div className="text-white text-4xl md:text-6xl lg:text-[90px] lg:leading-[85px]">SEM ATALHOS.</div>
+                <div className="text-[#ffd700] text-4xl md:text-6xl lg:text-[90px] lg:leading-[85px]">SEM DESCULPAS.</div>
               </h1>
             </motion.div>
 
@@ -423,7 +423,7 @@ export default function App() {
                 className="flex flex-col rounded-xl border border-[#2a2a2a] bg-[#0a0a0a] p-6 transition-colors duration-300 hover:border-[#ffd700] sm:p-8"
               >
                 <div className="mb-4 flex items-baseline gap-3 border-b border-[#2a2a2a] pb-4">
-                  <span className="font-['Oswald'] text-3xl font-bold tabular-nums text-[#2a2a2a] sm:text-4xl">
+                  <span className="font-['Oswald'] text-3xl font-bold tabular-nums text-[#6b6b6b] sm:text-4xl">
                     {item.step}
                   </span>
                   <h3 className="font-['Oswald'] text-lg font-bold uppercase tracking-wide text-[#ffd700] sm:text-xl">
@@ -678,33 +678,42 @@ export default function App() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
-                className={`bg-[#111111] border-2 rounded-lg p-8 relative ${
-                  plan.badge ? 'border-[#ffd700]' : 'border-[#2a2a2a]'
-                } hover:border-[#ffd700] transition-all duration-300`}
+                className="h-full"
               >
-                {plan.badge && (
-                  <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-[#ffd700] text-black px-4 py-1 text-xs font-['Inter'] font-bold uppercase tracking-wide whitespace-nowrap">
-                    {plan.badge}
+                <div
+                  className={`bg-[#111111] border-2 rounded-lg p-8 relative h-full flex flex-col
+                    transition-all duration-300 ease-out
+                    hover:-translate-y-1.5
+                    ${
+                      plan.badge
+                        ? 'border-[#ffd700] hover:shadow-[0_24px_56px_-8px_rgba(255,215,0,0.4)]'
+                        : 'border-[#2a2a2a] hover:border-[#ffd700] hover:shadow-[0_20px_50px_-12px_rgba(255,215,0,0.28)]'
+                    }`}
+                >
+                  {plan.badge && (
+                    <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-[#ffd700] text-black px-4 py-1 text-xs font-['Inter'] font-bold uppercase tracking-wide whitespace-nowrap z-10">
+                      {plan.badge}
+                    </div>
+                  )}
+                  <h3 className="font-['Oswald'] font-bold text-3xl uppercase text-white mb-2">
+                    {plan.name}
+                  </h3>
+                  <div className="mb-6">
+                    <span className="text-[#ffd700] font-['Oswald'] text-5xl font-bold">R$ {plan.price}</span>
+                    <span className="text-[#6b6b6b] font-['Inter']">/mês</span>
                   </div>
-                )}
-                <h3 className="font-['Oswald'] font-bold text-3xl uppercase text-white mb-2">
-                  {plan.name}
-                </h3>
-                <div className="mb-6">
-                  <span className="text-[#ffd700] font-['Oswald'] text-5xl font-bold">R$ {plan.price}</span>
-                  <span className="text-[#6b6b6b] font-['Inter']">/mês</span>
+                  <ul className="space-y-3 mb-8">
+                    {plan.features.map((feature, i) => (
+                      <li key={i} className="flex items-start gap-2">
+                        <div className="w-1.5 h-1.5 rounded-full bg-[#ffd700] mt-2 shrink-0" />
+                        <span className="text-[#c2c2c2] font-['Inter'] text-sm">{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  <button className="w-full bg-[#ffd700] text-black py-3 font-['Inter'] font-semibold uppercase tracking-wide hover:bg-[#d4a800] transition-all mt-auto">
+                    QUERO ESSE PLANO
+                  </button>
                 </div>
-                <ul className="space-y-3 mb-8">
-                  {plan.features.map((feature, i) => (
-                    <li key={i} className="flex items-start gap-2">
-                      <div className="w-1.5 h-1.5 rounded-full bg-[#ffd700] mt-2 shrink-0" />
-                      <span className="text-[#c2c2c2] font-['Inter'] text-sm">{feature}</span>
-                    </li>
-                  ))}
-                </ul>
-                <button className="w-full bg-[#ffd700] text-black py-3 font-['Inter'] font-semibold uppercase tracking-wide hover:bg-[#d4a800] transition-all">
-                  QUERO ESSE PLANO
-                </button>
               </motion.div>
             ))}
           </div>
@@ -924,11 +933,11 @@ export default function App() {
               </h2>
 
               <div className="mb-8">
-                <p className="text-white font-['Inter'] text-lg">Rua das Esmeraldas, 742</p>
-                <p className="text-[#b0b0b0] font-['Inter']">Jardim Morada do Sol</p>
-                <p className="text-[#b0b0b0] font-['Inter']">Indaiatuba, SP</p>
-                <p className="text-[#b0b0b0] font-['Inter'] mb-4">CEP 13.334-210</p>
-                <p className="text-[#6b6b6b] font-['Inter'] text-sm">
+                <p className="text-white font-['Inter'] text-sm">Rua das Esmeraldas, 742</p>
+                <p className="text-[#b0b0b0] font-['Inter'] text-xs">Jardim Morada do Sol</p>
+                <p className="text-[#b0b0b0] font-['Inter'] text-xs">Indaiatuba, SP</p>
+                <p className="text-[#b0b0b0] font-['Inter'] text-xs mb-4">CEP 13.334-210</p>
+                <p className="text-[#6b6b6b] font-['Inter'] text-[11px] leading-snug">
                   200m do Carrefour · Próximo à saída SP-075
                 </p>
               </div>
@@ -1006,7 +1015,7 @@ export default function App() {
             </h2>
 
             <p className="text-[#6b6b6b] font-['Inter'] text-xs md:text-sm tracking-[0.2em] uppercase mb-12">
-              AGENDE UMA VISITA · GRATUITA · SEM COMPROMISSO · TRAGA TÊNIS.
+              AGENDE UMA VISITA · GRATUITA · SEM COMPROMISSO.
             </p>
 
             <button className="bg-[#ffd700] text-black px-12 md:px-16 py-4 md:py-5 font-['Inter'] font-bold text-base md:text-lg tracking-wide uppercase hover:bg-[#d4a800] transition-all duration-300 shadow-2xl shadow-[#ffd700]/30">
@@ -1032,7 +1041,7 @@ export default function App() {
                 FORGEE
               </div>
               <p className="text-[#6b6b6b] text-xs uppercase tracking-wider font-['Inter']">
-                BEYOND LIMITS KNOWN™
+                ALÉM DOS LIMITES CONHECIDOS™
               </p>
             </div>
 
@@ -1057,7 +1066,7 @@ export default function App() {
 
           <div className="border-t border-[#1e1e1e] pt-8">
             <p className="text-[#6b6b6b] text-xs font-['Inter'] text-center">
-              FORGEE ACADEMIA LTDA. · CNPJ 00.000.000/0001-00 · CREF SP · DESIGN SYSTEM © 2026
+              FORGEE ACADEMIA LTDA. · CNPJ 00.000.000/0001-00 · CREF SP © 2026
             </p>
           </div>
         </div>

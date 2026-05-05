@@ -14,7 +14,7 @@ function BackgroundHorizontalBorder() {
     <div className="bg-[#0a0a0a] content-stretch flex flex-col items-center pb-[9px] pt-[8px] relative shrink-0 w-full" data-name="Background+HorizontalBorder">
       <div aria-hidden="true" className="absolute border-[#1e1e1e] border-b border-solid inset-0 pointer-events-none" />
       <div className="flex flex-col font-['Inter:Regular',sans-serif] font-normal justify-center leading-[0] not-italic relative shrink-0 text-[#6b6b6b] text-[10px] text-center tracking-[1.5px] uppercase whitespace-nowrap">
-        <p className="leading-[15px]">BEYOND LIMITS KNOWN™ · INDAIATUBA, SP · EST. 2018</p>
+        <p className="leading-[15px]">ALÉM DOS LIMITES CONHECIDOS™ · INDAIATUBA, SP · DESDE 2018</p>
       </div>
     </div>
   );
@@ -4236,7 +4236,7 @@ function Container166() {
   return (
     <div className="content-stretch flex flex-col h-full items-center relative shrink-0" data-name="Container">
       <div className="flex flex-col font-['Oswald:Bold',sans-serif] font-bold justify-center leading-[0] relative shrink-0 text-[#ffd700] text-[14px] text-center tracking-[4.2px] uppercase whitespace-nowrap">
-        <p className="leading-[20px]">· AGENDE UMA VISITA · GRATUITA · SEM COMPROMISSO · TRAGA TÊNIS</p>
+        <p className="leading-[20px]">· AGENDE UMA VISITA · GRATUITA · SEM COMPROMISSO</p>
       </div>
     </div>
   );
@@ -4246,7 +4246,7 @@ function Container167() {
   return (
     <div className="content-stretch flex flex-col h-full items-center relative shrink-0" data-name="Container">
       <div className="flex flex-col font-['Oswald:Bold',sans-serif] font-bold justify-center leading-[0] relative shrink-0 text-[#ffd700] text-[14px] text-center tracking-[4.2px] uppercase whitespace-nowrap">
-        <p className="leading-[20px]">· AGENDE UMA VISITA · GRATUITA · SEM COMPROMISSO · TRAGA TÊNIS</p>
+        <p className="leading-[20px]">· AGENDE UMA VISITA · GRATUITA · SEM COMPROMISSO</p>
       </div>
     </div>
   );
@@ -4256,7 +4256,7 @@ function Container168() {
   return (
     <div className="content-stretch flex flex-col h-full items-center relative shrink-0" data-name="Container">
       <div className="flex flex-col font-['Oswald:Bold',sans-serif] font-bold justify-center leading-[0] relative shrink-0 text-[#ffd700] text-[14px] text-center tracking-[4.2px] uppercase whitespace-nowrap">
-        <p className="leading-[20px]">· AGENDE UMA VISITA · GRATUITA · SEM COMPROMISSO · TRAGA TÊNIS</p>
+        <p className="leading-[20px]">· AGENDE UMA VISITA · GRATUITA · SEM COMPROMISSO</p>
       </div>
     </div>
   );
@@ -4324,7 +4324,7 @@ function Container172() {
   return (
     <div className="content-stretch flex flex-col items-start max-w-[384px] relative shrink-0 w-[384px]" data-name="Container">
       <div className="flex flex-col font-['Inter:Regular',sans-serif] font-normal justify-center leading-[0] not-italic relative shrink-0 text-[#6b6b6b] text-[14px] whitespace-nowrap">
-        <p className="leading-[20px]">BEYOND LIMITS KNOWN™</p>
+        <p className="leading-[20px]">ALÉM DOS LIMITES CONHECIDOS™</p>
       </div>
     </div>
   );
@@ -4556,19 +4556,7 @@ function Container176() {
     <div className="relative shrink-0" data-name="Container">
       <div className="bg-clip-padding border-0 border-[transparent] border-solid content-stretch flex flex-col items-start relative size-full">
         <div className="flex flex-col font-['Inter:Regular',sans-serif] font-normal justify-center leading-[0] not-italic relative shrink-0 text-[#6b6b6b] text-[12px] tracking-[1.2px] uppercase whitespace-nowrap">
-          <p className="leading-[16px]">FORGEE ACADEMIA LTDA. · CNPJ 00.000.000/0001-00 · CREF SP</p>
-        </div>
-      </div>
-    </div>
-  );
-}
-
-function Container177() {
-  return (
-    <div className="relative shrink-0" data-name="Container">
-      <div className="bg-clip-padding border-0 border-[transparent] border-solid content-stretch flex flex-col items-start relative size-full">
-        <div className="flex flex-col font-['Inter:Regular',sans-serif] font-normal justify-center leading-[0] not-italic relative shrink-0 text-[#6b6b6b] text-[12px] tracking-[1.2px] uppercase whitespace-nowrap">
-          <p className="leading-[16px]">DESIGN SYSTEM © 2026</p>
+          <p className="leading-[16px]">FORGEE ACADEMIA LTDA. · CNPJ 00.000.000/0001-00 · CREF SP © 2026</p>
         </div>
       </div>
     </div>
@@ -4577,10 +4565,9 @@ function Container177() {
 
 function HorizontalBorder13() {
   return (
-    <div className="content-stretch flex items-center justify-between pt-[33px] relative shrink-0 w-full" data-name="HorizontalBorder">
+    <div className="content-stretch flex items-center justify-center pt-[33px] relative shrink-0 w-full" data-name="HorizontalBorder">
       <div aria-hidden="true" className="absolute border-[#1e1e1e] border-solid border-t inset-0 pointer-events-none" />
       <Container176 />
-      <Container177 />
     </div>
   );
 }
