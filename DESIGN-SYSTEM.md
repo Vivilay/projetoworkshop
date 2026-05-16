@@ -1,502 +1,320 @@
 # FORGEE — Design System
 
-> Sistema de design completo para a plataforma FORGEE
-> Versão: 1.0 · 2026
+Documento de referência para **consistência visual** em todo o projeto: site público, dashboard e novos módulos.  
+Sempre consulte este arquivo antes de criar telas, componentes ou estilos.
+
+**Fonte da verdade no código:** `src/styles/theme.css`, `src/styles/fonts.css`, `src/lib/animations/`.
 
 ---
 
-## 1. Conceito e Identidade
+## 1. Identidade
 
-### Visão Geral
-Sistema construído em torno da ideia de **transformação através da disciplina** — cru, poderoso e direto. A linguagem visual combina cultura de alta performance com sensibilidade editorial cinematográfica. Cada elemento comunica tensão, movimento e poder conquistado.
-
-**Palavras-chave:** `dark-cinematic` · `gold-kinetic` · `high-contrast` · `editorial-bold` · `transformation` · `premium-athletic`
-
-### Princípio Central
-> **"Gold is not given. It is forged."**
-
-O ouro aqui não é ornamental — é a marca do que foi forjado. Quando em dúvida, reduza. Quando poder é necessário, ative através de cor, escala e contraste. Nunca através de complexidade.
+| Item | Valor |
+|------|--------|
+| **Marca** | FORGEE — academia premium, tom direto e intenso |
+| **Tagline** | Além dos limites conhecidos™ |
+| **Mood** | Escuro, atlético, preciso; ouro como energia e destaque (não decoração excessiva) |
+| **Idioma da UI** | Português (BR), textos de interface em caixa alta quando forem rótulos curtos ou CTAs |
 
 ---
 
-## 2. Sistema de Cores
+## 2. Cores
 
-### Paleta Base
+### 2.1 Tokens semânticos (preferir no código)
 
-#### Neutral Scale (Escala de Cinzas)
-```css
---neutral-950: #0A0A0A  /* Fundo mais profundo */
---neutral-900: #111111  /* Fundo primário, base da página */
---neutral-800: #1A1A1A  /* Cards, superfícies elevadas */
---neutral-700: #2A2A2A  /* Bordas, divisores, containers sutis */
---neutral-600: #3D3D3D  /* Estados desabilitados, elementos inativos */
---neutral-400: #6B6B6B  /* Texto desenfatizado, metadados */
---neutral-200: #C2C2C2  /* Texto secundário, legendas */
---neutral-100: #E0E0E0  /* Texto em superfícies escuras */
---neutral-50:  #F5F5F5  /* Branco adjacente, texto de máximo contraste */
-```
+Use classes Tailwind ligadas ao tema (`theme.css`). **Não invente hex novos** se existir token equivalente.
 
-#### Gold Variants (Variações de Dourado)
-```css
---gold-core:   #FFD700  /* Dourado primário — ponto de ignição da marca */
---gold-bright: #FFE340  /* Variante brilhante, momentos de alta energia */
---gold-deep:   #D4A800  /* Variante escura, hovers e overlays cinematográficos */
---gold-muted:  #B8960A  /* Tom suavizado para bordas e acentos sutis */
---gold-glow:   rgba(255, 215, 0, 0.12)  /* Brilho ambiente em baixa opacidade */
-```
+| Token | CSS variable | Uso |
+|-------|----------------|-----|
+| `background` | `--background` | Fundo principal (`#111111`) |
+| `foreground` | `--foreground` | Texto principal |
+| `primary` | `--primary` | Ouro FORGEE — CTAs, destaques, ícones ativos |
+| `primary-foreground` | `--primary-foreground` | Texto sobre ouro (preto) |
+| `card` | `--card` | Cards, blocos elevados (`#1a1a1a`) |
+| `muted` | `--muted` | Fundos suaves, bordas internas |
+| `muted-foreground` | `--muted-foreground` | Texto secundário legível |
+| `border` | `--border` | Bordas padrão (`#2a2a2a`) |
+| `destructive` | `--destructive` | Erros, exclusão |
+| `ring` | `--ring` | Focus visível (ouro) |
 
-#### Cores de Suporte
-```css
---steel-muted: #5A7080  /* Contraponto frio — usado para contraste, nunca dominante */
---success:     #3DAA6E  /* Confirmações positivas — usar com moderação */
---error:       #D93025  /* Feedback do sistema apenas */
---absolute-white: #FFFFFF  /* Texto knockout puro, lockup de logo */
---absolute-black: #000000  /* Pontos de âncora mais escuros, texto em botões dourados */
-```
+**Exemplos Tailwind:** `bg-background`, `text-foreground`, `bg-primary`, `text-primary`, `border-border`, `text-muted-foreground`.
 
-### Cores Semânticas
+### 2.2 Escala de ouro
 
-| Função | Token | Hex | Uso |
-|--------|-------|-----|-----|
-| **Primary** | `gold-core` | `#FFD700` | Cor ativadora dominante — botões, destaques, texto-chave |
-| **Primary Hover** | `gold-deep` | `#D4A800` | Estados pressionados e hover em elementos primários |
-| **Secondary** | `neutral-800` | `#1A1A1A` | Fundos de cards, superfícies secundárias |
-| **Accent** | `gold-bright` | `#FFE340` | Destaques interativos, anéis de foco |
-| **Text Primary** | `absolute-white` | `#FFFFFF` | Todos os títulos principais e corpo em fundos escuros |
-| **Text Muted** | `neutral-200` | `#C2C2C2` | Texto de suporte, metadados, legendas |
-| **Background Base** | `neutral-900` | `#111111` | Fundo padrão da página |
-| **Surface Elevated** | `neutral-800` | `#1A1A1A` | Cards, painéis, gavetas |
-| **Border Subtle** | `neutral-700` | `#2A2A2A` | Linhas estruturais |
-| **Border Accent** | `gold-muted` | `#B8960A` | Containers destacados e estados ativos |
+| Nome | Hex | Variable | Uso |
+|------|-----|----------|-----|
+| Gold core | `#ffd700` | `--gold-core` | Destaque principal, igual a `primary` |
+| Gold bright | `#ffe340` | `--gold-bright` | Hover em links dourados |
+| Gold deep | `#d4a800` | `--gold-deep` | Hover em botões sólidos |
+| Gold muted | `#b8960a` | `--gold-muted` | Estados desabilitados / secundário |
+| Gold glow | `rgba(255,215,0,0.12)` | `--gold-glow` | Overlays, gradientes sutis |
 
-### Lógica de Cor
+### 2.3 Neutros
 
-- **Superfícies escuras são sempre dominantes.** Dourado é usado como sinal — concentrado, proposital, nunca decorativo.
-- `gold-core` (#FFD700) marca o que importa. É diretivo, não estético.
-- Texto branco é a superfície primária de leitura em todos os fundos escuros.
-- Brilhos usam `gold-glow` (#FFD70020) a 8–20% de opacidade para criar profundidade cinematográfica sem ruído visual.
-- Dourado carrega uma conotação premium inerente e de alto risco — lê-se como conquistado, não dado.
+| Nome | Hex | Variable | Uso |
+|------|-----|----------|-----|
+| 950 | `#0a0a0a` | `--neutral-950` | Seções alternadas, fundo mais profundo |
+| 900 | `#111111` | `--neutral-900` | Fundo base do site |
+| 800 | `#1a1a1a` | `--neutral-800` | Cards, inputs |
+| 700 | `#2a2a2a` | `--neutral-700` | Bordas, divisores |
+| 600 | `#3d3d3d` | `--neutral-600` | Bordas hover discretas |
+| 400 | `#6b6b6b` | `--neutral-400` | Legendas, metadados, footer |
+| 200 | `#c2c2c2` | `--neutral-200` | Texto de apoio no marketing |
+| 100 | `#e0e0e0` | `--neutral-100` | Texto claro secundário |
+| 50 | `#f5f5f5` | `--neutral-50` | Raramente no dark mode |
+
+### 2.4 Hex legados no site (migrar gradualmente)
+
+O marketing ainda usa hex diretos. **Novos trechos devem usar tokens.** Equivalências:
+
+| Hex no site | Preferir |
+|-------------|----------|
+| `#111111` | `bg-background` ou `neutral-900` |
+| `#0a0a0a` | `bg-[var(--neutral-950)]` ou seção `bg-[#0a0a0a]` → token 950 |
+| `#1a1a1a` / `#2a2a2a` | `card` / `border` |
+| `#ffd700` | `text-primary` / `bg-primary` |
+| `#ffffff` / `text-white` | `text-foreground` |
+| `#c2c2c2` | `text-muted-foreground` ou `neutral-200` |
+| `#6b6b6b` | `text-[var(--neutral-400)]` |
+| `#b0b0b0` | Corpo secundário — alinhar a `muted-foreground` |
+
+### 2.5 Regras de contraste
+
+- Texto principal: branco (`foreground`) sobre fundos 900–950.
+- Ouro em títulos: sempre com peso bold (Oswald).
+- Botão primário: fundo `primary` + texto `primary-foreground` (preto).
+- Não usar ouro em parágrafos longos (cansa a leitura).
 
 ---
 
 ## 3. Tipografia
 
-### Fontes
+### 3.1 Famílias
 
-```css
-/* Importação */
-@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700;800;900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
-```
+| Família | Papel | Classes |
+|---------|--------|---------|
+| **Oswald** | Display — títulos, números de impacto, navegação de marca | `font-['Oswald']` |
+| **Inter** | UI — corpo, labels, botões, formulários | `font-['Inter']` |
 
-**Oswald** — Display e títulos (condensado, impacto)  
-**Inter** — Corpo, UI e interface (humanista sans, legibilidade)
+Carregamento: `src/styles/fonts.css` (Google Fonts: Oswald 400–900, Inter 400–700).
 
-### Hierarquia Tipográfica
+### 3.2 Hierarquia — marketing (site)
 
-| Nível | Estilo | Peso | Tamanho | Case | Tracking |
-|-------|--------|------|---------|------|----------|
-| **Display / Hero** | Oswald Condensed | Black / 900 | 64px – 120px+ | UPPERCASE | -0.02em a 0 |
-| **H1** | Oswald | Bold / 700–800 | 40px – 64px | UPPERCASE | -0.01em |
-| **H2** | Oswald | Bold / 700 | 28px – 40px | Mixed / Upper | 0 |
-| **H3 / Label** | Inter | SemiBold / 600 | 12px – 16px | UPPERCASE | 0.08em – 0.15em |
-| **Body** | Inter | Regular / 400 | 14px – 16px | Sentence | 0.01em |
-| **Caption / Micro** | Inter | Regular / 400 | 10px – 12px | UPPERCASE | 0.1em |
+| Elemento | Estilo | Exemplo de classes |
+|----------|--------|-------------------|
+| **Hero H1** | Oswald bold, uppercase, tracking apertado | `font-['Oswald'] font-bold uppercase tracking-[-0.03em] leading-[0.95]` |
+| **Linha de destaque (ouro)** | Mesmo H1, cor primary | `text-primary` ou `text-[#ffd700]` |
+| **H2 de seção** | Oswald bold, uppercase, escala responsiva | `text-4xl md:text-6xl lg:text-7xl tracking-tight uppercase` |
+| **Palavra-chave no H2** | Linha em ouro | segunda `motion.div` / `span` com `text-primary` |
+| **Rótulo de seção** | Inter medium, xs, tracking largo, ouro | `text-primary text-xs tracking-[1.44px] uppercase font-['Inter'] font-medium` |
+| **Linha decorativa** | Barra antes do rótulo | `h-px w-8 bg-primary` + flex `gap-4` |
+| **Corpo** | Inter, sm–base, neutro claro | `font-['Inter'] text-sm md:text-base text-muted-foreground` |
+| **Corpo ênfase** | Inter italic ouro (uso pontual) | `font-['Inter'] italic text-primary` |
+| **Lista / passo (01 ·)** | Oswald bold, ouro | `font-['Oswald'] font-bold uppercase text-primary` |
+| **Footer / legal** | Inter xs, neutral-400 | `text-xs text-[var(--neutral-400)]` |
 
-### Distribuição de Peso
-
-- **80% do peso tipográfico é Heavy ou Black** — este sistema lidera com força.
-- Corpo de texto é o único elemento de peso regular, sempre subordinado.
-- **Itálico não faz parte deste sistema.** Ênfase é alcançada através de `gold-core` e mudança de peso, não de ângulo.
-
-### Padrão de Contraste de Palavra-Chave
-
-Um motivo recorrente: **uma palavra ou frase em `gold-core`** dentro de um título branco. Isso cria um ponto quente composicional que guia a atenção sem decoração.
-
-```
-SEM MÁGICA
-SEM ATALHOS
-SEM [DESCULPAS]  ← gold-core (#FFD700)
-```
-
-### Tendências de Espaçamento
-
-- **Display type:** leading apertado (1.0–1.1), zero ou letter-spacing negativo
-- **Corpo de texto:** leading balanceado (1.5–1.65), tracking levemente aberto
-- **Texto de label:** tracking amplo (0.08–0.15em) para compensar tamanho pequeno
-
----
-
-## 4. Espaçamento e Layout
-
-### Escala de Espaçamento (base 8pt)
-
-```css
---space-1: 4px    /* Gaps micro, padding de ícones */
---space-2: 8px    /* Espaçamento inline, internos de componentes apertados */
---space-3: 16px   /* Padding padrão de componentes */
---space-4: 24px   /* Internos de seção, padding de cards */
---space-5: 32px   /* Separação de componentes */
---space-6: 48px   /* Gaps de seção, quebras rítmicas principais */
---space-7: 64px   /* Gaps grandes de layout */
---space-8: 96px   /* Espaço de respiração de hero, headers de seção */
---space-9: 128px+ /* Separadores de seção full-bleed */
-```
-
-### Densidade de Layout
-
-**Balanceado a Espaçoso.** Conteúdo nunca é apertado — espaço de respiração é intencional. Seções alternam entre zonas cinematográficas full-bleed e painéis informativos contidos.
-
-### Sistema de Grid
-
-- **Desktop:** 12 colunas, gutters 24px, margens horizontais 80–120px
-- **Tablet:** 8 colunas, gutters 20px
-- **Mobile:** 4 colunas, gutters 16px
-- **Base de alinhamento:** grid 8pt — todo dimensionamento e espaçamento divisível por 8
-
-### Lógica de Layout
-
-- **Seções hero** são full-viewport, dominadas por imagem, com texto em camadas sobre overlays escuros
-- **Seções de informação** usam divisões assimétricas (40/60 ou 50/50)
-- **Alinhamento à esquerda domina.** Centro é reservado apenas para momentos hero e pull quotes
-- **Mobile-first:** sempre priorizar experiência mobile, expandir para desktop
-
----
-
-## 5. Formas e Linguagem de UI
-
-### Border Radius
-
-| Contexto | Radius |
-|----------|--------|
-| Botões (primários) | 0px – 4px (sharp a quase-sharp) |
-| Cards / Painéis | 8px – 12px |
-| Containers de imagem | 8px – 16px |
-| Pills / Tags | 999px — usar com moderação |
-| Ícones / Badges | 4px ou circular |
-
-**Princípio:** O sistema tende ao afiado. Elementos arredondados são a exceção. Elementos hero e estruturais permanecem com bordas duras.
-
-### Uso de Bordas
-
-- Bordas são raras e sempre sutis (`neutral-700`, 1px)
-- Botões preenchidos são preferidos sobre variantes delineadas
-- Botões ghost/outline usam stroke de `gold-core` 1px com preenchimento transparente — CTAs secundários apenas
-- Divisores de acento usam `gold-core` ou `gold-muted` a 1–2px
-
-### Estilo de Componentes
-
-- **Flat com elevação seletiva** — profundidade através de contraste de cor, não sombras
-- **Linhas de accordion:** largura total, separadas por mudança sutil de fundo, indicadores de seta
-- **Navegação:** minimal, horizontal — estados ativos usam `gold-core`, não sublinhados
-- **CTAs primários:** retangular, preenchimento `gold-core` + texto `#000000` (preto), largura total em mobile
-
-> **Crítico:** Como `gold-core` (#FFD700) é uma cor clara, todos os labels de botões em fundos dourados devem usar `#000000` (preto) para atender aos requisitos de contraste WCAG AA.
-
----
-
-## 6. Detalhes Visuais
-
-### Sombras
-
-- **Sem box shadows genéricas** em cards ou botões de UI
-- **Brilho ambiente:** gradiente radial de `gold-glow` (#FFD70020) a 10–20% de opacidade, posicionado direcionalmente
-- **Faixas de luz:** linhas de movimento diagonais ou radiais em `gold-core` a 20–40% de opacidade — para fundos de campanha e hero apenas
-- **Brilho de texto:** drop-shadow `gold-core` com offset 0, blur 12–20px — reservado apenas para momentos display/hero
-
-### Bordas
-
-- **Bordas estruturais:** invisíveis por padrão
-- **Quando visíveis:** `neutral-700`, 1px — apenas quando contraste com fundo é insuficiente
-- **Bordas de acento:** `gold-core` ou `gold-muted`, 2–3px — tratamento de borda esquerda em blocos destacados e itens ativos
-
-### Decorações
+### 3.3 Hierarquia — dashboard
 
 | Elemento | Estilo |
 |----------|--------|
-| **Textura de fundo** | Grid de pontos halftone a 4–8% de opacidade em `gold-core` em campos escuros |
-| **Light sweep / raios** | Faixas radiais ou diagonais em `gold-glow` — zonas hero e campanha |
-| **Overlay de ruído** | Grão de filme (filtro SVG ou CSS) a 3–6% de opacidade em fundos escuros |
-| **Linhas de movimento** | Faixas de desfoque de velocidade em `gold-core` a 20–40% — uso editorial apenas, não UI |
-| **Ghost type** | Texto superdimensionado a 4–8% de opacidade como camada de textura de fundo atrás de fotografia |
-| **Dot matrix** | Padrão de pontos pixel em `gold-core` em baixa opacidade — identificador do sistema, referência tech |
+| Título de página | `font-['Oswald'] text-3xl md:text-4xl font-bold uppercase` |
+| Subtítulo / descrição | `text-sm text-muted-foreground` |
+| Rótulo de contexto | `text-xs uppercase tracking-wider text-primary` |
+| Métricas (KPI) | Oswald `text-3xl font-bold` em cards |
+| Labels de card | `text-xs uppercase tracking-wide text-muted-foreground` |
 
-**Princípio:** Decoração amplifica energia. Ela nunca preenche espaço. Todo tratamento de fundo responde ao humano em quadro.
+### 3.4 Base HTML
 
----
-
-## 7. Contraste e Acessibilidade
-
-### Nível de Contraste
-
-**Alto contraste por padrão.** Branco (#FFFFFF) em escuro (#111111) excede WCAG AA a ~18:1.
-
-### Abordagem de Legibilidade
-
-| Pareamento | Ratio de Contraste | Padrão |
-|------------|-------------------|--------|
-| `#FFFFFF` em `#111111` | ~18:1 | AAA ✓ |
-| `#000000` em `#FFD700` | ~13.4:1 | AAA ✓ |
-| `gold-core` (#FFD700) em `#111111` | ~11.2:1 | AAA ✓ (texto grande) |
-| `neutral-200` (#C2C2C2) em `#111111` | ~8:1 | AA ✓ |
-
-- **Corpo de texto:** sempre branco ou quase-branco em escuro — nunca dourado para texto de leitura
-- `gold-core` é usado para títulos, palavras de acento e ativação de UI apenas
-- Nunca use dourado como fundo para texto de comprimento de corpo
-
-### Cor como Hierarquia
-
-- **Branco** — informação primária, importância máxima
-- **`gold-core`** — ponto de ativação, a palavra ou elemento que muda tudo
-- **`neutral-200`** — suporte, contextual, subordinado
-- **`neutral-400`** — desenfatizado, apenas metadados
-
-### Considerações Inclusivas
-
-- Nunca confie apenas em cor para transmitir significado — use indicadores de seta, posição e tamanho para reforçar estados
-- **Target touch mínimo:** 44×44px
-- **Estados de foco:** outline `gold-core`, 2px, em todos os elementos interativos
+`theme.css` define `html { font-size: 16px }`. Pesos padrão: medium 600, normal 400.
 
 ---
 
-## 8. Componentes-Chave
+## 4. Espaçamento e layout
 
-### Botões
+### 4.1 Seções (marketing)
 
-#### Primário
-```css
-background: #FFD700
-color: #000000
-padding: 12px 48px
-font: Inter SemiBold
-text-transform: uppercase
-letter-spacing: 0.05em
-border-radius: 0-4px
-hover: background #D4A800
+| Padrão | Valor |
+|--------|--------|
+| Padding horizontal | `px-4 md:px-8 lg:px-16` |
+| Padding vertical de seção | `py-16 md:py-24` |
+| Largura máxima conteúdo | `max-w-7xl mx-auto` (padrão) · `max-w-4xl` (FAQ, CTA estreito) |
+| Grid 2 colunas | `grid grid-cols-1 lg:grid-cols-2 gap-12` |
+
+### 4.2 Dashboard
+
+| Padrão | Valor |
+|--------|--------|
+| Área principal | `p-4 md:p-6` dentro de `SidebarInset` |
+| Cards em grid | `gap-4 sm:grid-cols-2 xl:grid-cols-4` |
+| Sidebar | tokens `--sidebar-*` em `theme.css` |
+
+### 4.3 Raio de borda
+
+| Token | Valor |
+|-------|--------|
+| `--radius` | `0.5rem` (8px) |
+| `rounded-lg` | cards, mapas, blocos médios |
+| `rounded-md` | botões shadcn padrão |
+| `rounded-xl` | destaques pontuais |
+
+---
+
+## 5. Componentes
+
+### 5.1 Botões
+
+**Primário (CTA)** — marketing:
+
+```html
+<button class="bg-primary text-primary-foreground px-8 py-3 font-['Inter'] font-semibold uppercase tracking-wide hover:bg-[#d4a800] transition-all">
 ```
 
-#### Secundário (Texto apenas)
-```css
-background: transparent
-color: #FFD700
-padding: 12px 48px
-font: Inter SemiBold
-text-transform: uppercase
-letter-spacing: 0.05em
-hover: color #FFE340
+Preferir componente: `<Button>` de `@/app/components/ui/button` com `variant="default"`.
+
+**Secundário / ghost** — texto ouro, sem fundo:
+
+```html
+<button class="text-primary px-8 py-3 font-['Inter'] font-semibold uppercase tracking-wide hover:text-[#ffe340] transition-all">
 ```
 
-### Header / Navegação
+**Links de navegação:** `text-[#c2c2c2] hover:text-primary transition-colors uppercase text-xs`.
 
-```css
-position: fixed
-top: 0
-z-index: 50
-transition: all 500ms
+**Regras:** CTAs sempre `uppercase`; `cursor-pointer` em elementos clicáveis; hover com transição `transition-all` ou `transition-colors` (150–300ms).
 
-/* No topo da página */
-background: transparent
+### 5.2 Cards
 
-/* Após scroll > 100px */
-background: rgba(17, 17, 17, 0.9)
-backdrop-filter: blur(16px)
-box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3)
+```html
+<div class="bg-card border border-border rounded-lg ...">
 ```
 
-### Cards
+Marketing: `bg-[#0a0a0a]` + `border-[#2a2a2a]` → migrar para `bg-card` / `border-border`.  
+Hover em cards interativos: `hover:border-primary/40` (dashboard).
 
-```css
-background: #1A1A1A
-border: 1px solid #2A2A2A
-border-radius: 8px-12px
-padding: 32px
-hover: border-color #FFD700
-transition: all 300ms
+### 5.3 Rótulo de seção (padrão obrigatório)
+
+```html
+<div class="flex items-center gap-4 mb-8">
+  <motion.div class="h-px w-8 bg-primary" />
+  <span class="text-primary text-xs tracking-[1.44px] uppercase font-['Inter'] font-medium">
+    Nome da seção
+  </span>
+</div>
 ```
 
-### Accordions
+### 5.4 Accordion / FAQ
 
-```css
-width: 100%
-border-bottom: 1px solid #2A2A2A
-padding: 24px 0
+- Botão pergunta: `w-full py-6 flex justify-between hover:bg-background transition-colors text-left cursor-pointer`
+- Título pergunta: Oswald bold `text-xl md:text-2xl uppercase text-white`
+- Ícone chevron: stroke `#FFD700` (primary)
+- Resposta: Inter `text-muted-foreground leading-relaxed`
 
-button:
-  display: flex
-  justify-content: space-between
-  color: #FFD700
-  font: Oswald Bold
-  
-icon:
-  rotate: 0deg (fechado) | 180deg (aberto)
-  transition: 300ms
-```
+### 5.5 Imagens
+
+- Fotos de treino: frequentemente `grayscale` com hover `grayscale-0` em grupos.
+- Overlays: gradientes escuros + toque `primary/10–20` — não competir com o texto.
+- Hero: classe `.hero-section` + gradiente em `theme.css` (`::after`).
+
+### 5.6 Formulários (dashboard)
+
+Usar componentes em `src/app/components/ui/` (`Input`, `Label`, `Select`, etc.) com tokens `input`, `ring`, `border`.
 
 ---
 
-## 9. Animações
+## 6. Motion e animação
 
-### Princípios
+Biblioteca: **Motion** (`motion/react`). Presets em `src/lib/animations/variants.ts`.
 
-- **Sutis e intencionais** — animações servem ao conteúdo, não distraem
-- **Duração padrão:** 300ms–600ms
-- **Easing:** ease-out para entradas, ease-in-out para transições
-- **Stagger:** 0.1s entre elementos em listas
+### 6.1 Quando usar
 
-### Animações-Chave
+| Situação | Preset / componente |
+|----------|---------------------|
+| Bloco ao entrar na viewport | `fadeInUp` + `AnimatedSection` ou `whileInView` |
+| Lista de itens | `staggerContainer` + `staggerItem` ou `StaggerList` |
+| Troca de rota (dashboard) | `PageTransition` + `pageVariants` |
+| Fade simples | `fadeIn` / `FadeIn` |
+| Entrada lateral | `slideInLeft` / `slideInRight` |
 
-```javascript
-// Fade In Up
-fadeInUp: {
-  hidden: { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0 }
-}
+### 6.2 Parâmetros padrão
 
-// Stagger Container
-staggerContainer: {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: { staggerChildren: 0.1 }
-  }
-}
+| Parâmetro | Valor |
+|-----------|--------|
+| Viewport | `once: true`, `amount: 0.2`, `margin: "0px 0px -48px 0px"` |
+| Transição suave | `duration: 0.55`, ease `[0.22, 1, 0.36, 1]` |
+| Transição de página | `duration: 0.35`, mesmo ease |
+| Spring (uso pontual) | `stiffness: 280`, `damping: 26` |
+
+### 6.3 Regras
+
+- Preferir **opacity + translate** leve; evitar animações longas (>0.7s).
+- Não animar `opacity: 0` em conteúdo crítico sem fallback visível (mapas, formulários).
+- Respeitar `prefers-reduced-motion` em novos componentes (a implementar globalmente quando necessário).
+- Importar variants de `@/lib/animations`, não duplicar objetos de animação.
+
+---
+
+## 7. Ícones
+
+- Biblioteca: **Lucide React** (`lucide-react`).
+- Tamanho padrão em UI: `size-4` (16px); em cards KPI: `size-4 text-primary`.
+- Cor: `text-primary` para ícones de destaque; `text-muted-foreground` para neutros.
+
+---
+
+## 8. Gráficos (dashboard)
+
+Tokens em `theme.css`: `--chart-1` … `--chart-5` (família ouro + neutro azulado).  
+Usar componente `Chart` em `@/app/components/ui/chart` para manter cores alinhadas.
+
+---
+
+## 9. Estrutura do projeto
+
+```
+src/
+├── styles/theme.css      # tokens e tema Tailwind
+├── styles/fonts.css      # Oswald + Inter
+├── lib/animations/       # variants Motion
+├── components/motion/    # AnimatedSection, PageTransition, …
+├── app/components/ui/    # shadcn/Radix (Button, Card, Sidebar, …)
+├── pages/site/           # marketing
+├── pages/dashboard/      # painel administrativo
+└── layouts/              # DashboardLayout, etc.
 ```
 
-### Interações
-
-- **Hover em botões:** mudança de cor suave (300ms)
-- **Scroll reveal:** fade in up com stagger
-- **Accordions:** height auto com opacity (300ms)
-- **Header scroll:** background e blur transition (500ms)
+Rotas: `src/config/routes.ts`.
 
 ---
 
-## 10. Imagens e Mídia
+## 10. Checklist para novas telas
 
-### Tratamento de Imagens
-
-```css
-/* Imagens hero e principais */
-object-fit: cover
-object-position: 70%-80% center /* Ajustar conforme composição */
-
-/* Overlay padrão para legibilidade */
-background: linear-gradient(to right, rgba(0,0,0,0.9), rgba(0,0,0,0.7), rgba(0,0,0,0.6))
-background: linear-gradient(to top, rgba(0,0,0,0.8), transparent)
-```
-
-### Efeito Grayscale
-
-```css
-filter: grayscale(100%)
-mix-blend-mode: saturation (com overlay branco)
-```
-
-### Aspect Ratios Comuns
-
-- **Hero:** 16:9 ou viewport height
-- **Cards de equipe/depoimentos:** 1:1 (quadrado)
-- **Imagens de galeria:** 3:4 (retrato)
-- **Equipamentos:** 4:3 (paisagem)
+- [ ] Fundo `background` ou `neutral-950` em seções alternadas
+- [ ] Títulos em **Oswald** uppercase; corpo em **Inter**
+- [ ] Destaques em `primary` (ouro), não em amarelo aleatório
+- [ ] Bordas `border-border` (`#2a2a2a`)
+- [ ] Rótulo de seção com barra + tracking `1.44px` (marketing)
+- [ ] Botões e links com hover definido e `cursor-pointer`
+- [ ] Animações via `@/lib/animations` ou `@/components/motion`
+- [ ] Componentes UI reutilizados de `@/app/components/ui/`
+- [ ] Dashboard e site compartilham os mesmos tokens (`theme.css`)
 
 ---
 
-## 11. Responsividade
+## 11. O que evitar
 
-### Breakpoints
-
-```css
-/* Mobile First */
-mobile: < 768px
-tablet: 768px - 1024px
-desktop: > 1024px
-large: > 1440px
-```
-
-### Abordagem
-
-- **Mobile-first sempre**
-- Conteúdo empilhado verticalmente em mobile
-- Grids expandem de 1 coluna → 2 colunas → 3-4 colunas
-- Padding reduzido em mobile (16px vs 32px+ desktop)
-- Tamanhos de fonte escalados (4xl mobile → 6xl tablet → 8xl desktop)
-
-### Otimizações Mobile
-
-- Full-width buttons em mobile
-- Navegação simplificada (hamburger menu se necessário)
-- Touch targets mínimo 44x44px
-- Espaçamento generoso entre elementos interativos
+- Cores fora da paleta (azuis, verdes) sem aprovação explícita
+- Fontes diferentes de Oswald/Inter
+- Títulos em sentence case no marketing (usar **UPPERCASE** em headlines)
+- Bordas claras (#fff) em fundo escuro
+- Sombras pesadas estilo “material claro”
+- Copiar hex do Figma sem mapear para token
+- `motion.div` com `opacity: 0` inicial em conteúdo essencial sem `whileInView` confiável
+- Remover scrollbar global sem alternativa de acessibilidade em novas áreas scrolláveis internas
 
 ---
 
-## 12. Boas Práticas
+## 12. Atualização deste documento
 
-### Deve Fazer ✓
+Ao alterar `theme.css`, padrões de tipo ou animações, **atualize este arquivo na mesma PR/commit**.  
+Este design system é a referência para humanos e para assistentes de código no repositório.
 
-- Usar `gold-core` com propósito — marca o que importa
-- Manter alto contraste em todo texto
-- Respeitar a escala de espaçamento 8pt
-- Priorizar mobile-first
-- Usar Oswald para impacto, Inter para legibilidade
-- Testar acessibilidade (contraste, keyboard navigation)
-- Manter animações sutis e performáticas
-
-### Não Fazer ✗
-
-- Usar dourado como decoração
-- Criar fundos dourados para texto longo
-- Adicionar bordas desnecessárias
-- Usar mais de 2 níveis de hierarquia tipográfica por seção
-- Centralizar texto fora de momentos hero
-- Usar itálico para ênfase
-- Adicionar sombras genéricas de box-shadow
-- Ignorar estados de hover/focus
-- Quebrar a escala de espaçamento
-
----
-
-## 13. Checklist de Consistência
-
-Antes de implementar novos componentes ou seções:
-
-- [ ] Cores vêm da paleta definida?
-- [ ] Tipografia usa Oswald (display) ou Inter (UI/corpo)?
-- [ ] Espaçamento segue escala 8pt?
-- [ ] Contraste de texto atende WCAG AA (mínimo)?
-- [ ] Botões primários usam dourado + texto preto?
-- [ ] Animações são sutis e intencionais?
-- [ ] Design funciona em mobile?
-- [ ] Estados interativos (hover, focus) estão definidos?
-- [ ] Imagens têm overlays para legibilidade?
-
----
-
-## 14. Recursos e Referências
-
-### Arquivos-Chave
-
-- `/src/styles/theme.css` — Tokens CSS e variáveis
-- `/src/styles/fonts.css` — Importações de fontes
-- `/src/app/App.tsx` — Implementação de componentes
-- `DESIGN-SYSTEM.md` — Este documento
-
-### Ferramentas Recomendadas
-
-- **Contrast Checker:** [WebAIM](https://webaim.org/resources/contrastchecker/)
-- **Fontes:** [Google Fonts](https://fonts.google.com)
-- **Animações:** Motion/React (Framer Motion)
-- **Ícones:** Lucide React (se necessário)
-
----
-
-## Notas Finais
-
-Este sistema não decora — ele **energiza**. A paleta é elementar: ouro fundido contra escuridão profunda. A tipografia é física e direta. O espaço é conquistado. Dourado aqui não é ornamental — é a marca do que foi forjado.
-
-Quando em dúvida, reduza. Quando poder é necessário, ative através de cor, escala e contraste. Nunca através de complexidade.
-
----
-
-**FORGEE DESIGN SYSTEM © 2026**  
-*Beyond Limits Known™*
+**Versão:** 1.0 · **Projeto:** projetoworkshop / FORGEE · **Stack:** React, Vite, Tailwind CSS v4, Motion.

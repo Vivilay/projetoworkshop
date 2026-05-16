@@ -1,0 +1,18 @@
+---
+description: Consistência visual FORGEE — seguir design-system.md em UI, CSS e componentes
+alwaysApply: true
+---
+
+# Design System FORGEE
+
+Antes de criar ou alterar interface (site, dashboard, componentes, estilos):
+
+1. Leia e siga **`design-system.md`** na raiz do repositório.
+2. Use tokens de `src/styles/theme.css` (`primary`, `background`, `border`, `muted-foreground`, etc.) em vez de hex novos.
+3. Tipografia: **Oswald** (títulos, uppercase no marketing) e **Inter** (UI e corpo).
+4. Animações: presets em `@/lib/animations` e componentes em `@/components/motion` — não duplicar variants.
+5. UI: reutilizar `@/app/components/ui/*` (Button, Card, Sidebar, etc.).
+
+Se o pedido conflitar com o design system, alinhe ao documento e mencione o desvio apenas se o usuário exigir exceção explícita.
+
+Ao mudar tokens ou padrões visuais, atualize `design-system.md` no mesmo trabalho.
