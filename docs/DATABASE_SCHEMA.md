@@ -295,6 +295,20 @@ Usuario
 
 ---
 
+## Implantação no Supabase
+
+DDL Postgres versionado em **`supabase/migrations/`**:
+
+- **`20260524143000_forgee_initial_visit_and_members.sql`** — `visit_bookings` (marketing) + `members` opcional.
+
+- **`20260525174500_forgee_academy_dashboard_schema.sql`** — schema deste doc (Enums, RLS por equipe/admin, buckets Storage).
+
+Ordem das migrations + **primeiro usuário admin** (`usuarios`): [`supabase/README.md`](../supabase/README.md).
+
+**Postgres físico:** colunas em **`snake_case`** (ex.: `data_nasc`, `assinatura_url`, `forma_pgto`). O mapeamento com os camelCase aqui fica na app ou via Prisma `@map`.
+
+---
+
 ## Configuração Supabase
 
 ```bash

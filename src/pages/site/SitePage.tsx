@@ -12,6 +12,7 @@ import imgHero from "@/imports/image.png";
 import { useState, useEffect } from "react";
 import { Link } from "react-router";
 import { routes } from "@/config/routes";
+import { VisitBookingSection } from "@/features/visit-booking/VisitBookingSection";
 
 const FORGEE_MAP_QUERY =
   "Rua das Esmeraldas, 742, Jardim Morada do Sol, Indaiatuba - SP, 13334-210, Brasil";
@@ -1048,13 +1049,11 @@ export default function SitePage() {
               <div className="text-[#ffd700]">AGORA É A AÇÃO.</div>
             </h2>
 
-            <p className="text-[#6b6b6b] font-['Inter'] text-xs md:text-sm tracking-[0.2em] uppercase mb-12">
+            <p className="text-[#6b6b6b] font-['Inter'] text-xs md:text-sm tracking-[0.2em] uppercase mb-8">
               AGENDE UMA VISITA · GRATUITA · SEM COMPROMISSO.
             </p>
 
-            <button className="bg-[#ffd700] text-black px-12 md:px-16 py-4 md:py-5 font-['Inter'] font-bold text-base md:text-lg tracking-wide uppercase hover:bg-[#d4a800] transition-all duration-300 shadow-2xl shadow-[#ffd700]/30">
-              AGENDAR VISITA GRATUITA
-            </button>
+            <VisitBookingSection />
           </motion.div>
         </div>
 
